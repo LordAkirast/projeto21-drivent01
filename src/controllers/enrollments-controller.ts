@@ -20,8 +20,41 @@ export async function postCreateOrUpdateEnrollment(req: AuthenticatedRequest, re
   return res.sendStatus(httpStatus.OK);
 }
 
-// TODO - Receber o CEP do usuário por query params.
+// TODO - Receber o CEP do usuário por query params. - hecho
 export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response) {
-  const address = await enrollmentsService.getAddressFromCEP();
-  res.status(httpStatus.OK).send(address);
+  try {
+    const cep = req.query.cep as string;
+
+    if (!cep) {
+      return res.status(httpStatus.BAD_REQUEST).send('CEP não fornecido');
+    }
+
+    const address = await enrollmentsService.getAddressFromCEP(cep);
+
+    // Sua lógica de validação de endereço aqui
+    if (
+      address.logradouro === undefined &&
+      address.complemento === undefined &&
+      address.bairro === undefined &&
+      address.cidade === undefined &&
+      address.uf === undefined
+    ) {
+      console.log('ENDEREÇO NÃO ENCONTRADO');
+      return res.status(httpStatus.BAD_REQUEST).send('ENDEREÇO NÃO ENCONTRADO');
+    }
+
+    res.status(httpStatus.OK).send(address);
+  } catch (error) {
+    console.log('erruuu', error)
+
+    if (error.status = 400) {
+      res.status(httpStatus.BAD_REQUEST).send('CEP INVÁLIDO');
+
+    } else {
+      // Sua lógica de tratamento de erro aqui
+      res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro ao obter o endereço do CEP');
+    }
+  }
 }
+
+
