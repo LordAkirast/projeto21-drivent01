@@ -31,7 +31,6 @@ export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response
 
     const address = await enrollmentsService.getAddressFromCEP(cep);
 
-    // Sua lógica de validação de endereço aqui
     if (
       address.logradouro === undefined &&
       address.complemento === undefined &&
@@ -51,7 +50,7 @@ export async function getAddressFromCEP(req: AuthenticatedRequest, res: Response
       res.status(httpStatus.BAD_REQUEST).send('CEP INVÁLIDO');
 
     } else {
-      // Sua lógica de tratamento de erro aqui
+
       res.status(httpStatus.INTERNAL_SERVER_ERROR).send('Erro ao obter o endereço do CEP');
     }
   }
