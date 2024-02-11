@@ -9,3 +9,5 @@ export async function singInPost(req: Request, res: Response) {
 
   return res.status(httpStatus.OK).send(result);
 }
+
+///controllers

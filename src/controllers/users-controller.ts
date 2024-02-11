@@ -12,3 +12,5 @@ export async function usersPost(req: Request, res: Response) {
     email: user.email,
   });
 }
+
+///userscontroller
