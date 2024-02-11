@@ -6,7 +6,7 @@ Back-end for Driven.t, an event management solution.
 
 Driven.t is a web browser application with which you can manage every single aspect of your event.
 
-## How to run for development
+## How to run for developments
 
 1. Clone this repository
 2. Install all dependencies
@@ -14,6 +14,7 @@ Driven.t is a web browser application with which you can manage every single asp
 ```bash
 npm i
 ```
+
 
 3. Create a PostgreSQL database with whatever name you want
 4. Configure the `.env.development` file using the `.env.example` file (see "Running application locally or inside docker section" for details)

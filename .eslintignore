@@ -10,4 +10,4 @@ README.md
 prisma/**/*
 docker-compose*
 Dockerfile*
-nginx.conf
+nginx.conf 
