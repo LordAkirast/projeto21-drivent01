@@ -7,7 +7,7 @@ import { usersRouter, authenticationRouter, eventsRouter, enrollmentsRouter } fr
 import { loadEnv, connectDb, disconnectDB } from '@/config';
 
 loadEnv();
-
+//teste
 const app = express();
 app
   .use(cors())
